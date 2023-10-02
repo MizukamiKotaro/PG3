@@ -16,12 +16,34 @@ char min<char>(char a, char b) {
 	return '\n';
 }
 
+int Syachiku(int hour, int hourmoney, int money) {
+
+	int money0 = 1072 * (hour + 1);
+	
+	if (hour == 0) {
+		money = 100;
+		hourmoney = money;
+		hour++;
+	}
+	else {
+		hourmoney = hourmoney * 2 - 50;
+		money += hourmoney;
+		hour++;
+	}
+
+	if (money > money0) {
+		return hour;
+	}
+	else {
+		return Syachiku(hour, hourmoney, money);
+	}
+}
+
+
+
 int main() {
 
-	printf("%d\n", min<int>(114, 514));
-	printf("%f\n", min<float>(11.4f, 51.4f));
-	printf("%f\n", min(11.4f, 51.4f));
-	printf("%c", min<char>('114', '514'));
+	printf("%d\n", Syachiku(0, 0, 0));
 
 	return 0;
 }
