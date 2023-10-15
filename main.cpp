@@ -1,4 +1,9 @@
 ﻿#include <stdio.h>
+#include <random>
+#include <chrono>
+#include <thread>
+#include <string>
+
 
 template <typename T>
 T min(T a,T b) {
@@ -39,11 +44,77 @@ int Syachiku(int hour, int hourmoney, int money) {
 	}
 }
 
+typedef int (*newType)();
+typedef void (*PFunc)(int, int);
 
+int DicePip() { 
+	std::random_device dice;
+	return dice() % 6 + 1;
+}
+
+int Input() {
+
+	int answer;
+
+	do {
+		printf("丁の場合1を、半の場合２を入力してEnterを押してください\n");
+
+		// 文字列はいるとバグるgetを使ったのを調べ中。保留。
+		scanf_s("%d", &answer);
+
+		if (answer == 1 || answer == 2) {
+			return answer;
+		}
+
+		printf("正しく入力してください\n");
+
+	} while (true);
+
+}
+
+void ChoHan(PFunc p, int second) {
+
+	newType hoge;
+
+	hoge = &DicePip;
+	int dice = hoge();
+	hoge = &Input;
+	int answer = hoge();
+
+	std::this_thread::sleep_for(std::chrono::milliseconds(second * 1000));
+
+	p(answer, dice);
+}
+
+void Answer(int answer, int dice) {
+
+	if (answer == (dice) % 2 + 1) {
+		if ((dice) % 2 == 0) {
+			printf("%dの丁で正解\n", dice);
+		}
+		else {
+			printf("%dの半で正解\n", dice);
+		}
+	}
+	else {
+		if ((dice) % 2 == 0) {
+			printf("%dの丁で不正解\n", dice);
+		}
+		else {
+			printf("%dの半で不正解\n", dice);
+		}
+	}
+}
 
 int main() {
 
-	printf("%d\n", Syachiku(0, 0, 0));
+	PFunc p;
+	p = Answer;
+
+	while (true)
+	{
+		ChoHan(p, 3);
+	}
 
 	return 0;
 }
