@@ -3,8 +3,8 @@
 #include <chrono>
 #include <thread>
 #include <string>
+#include <iostream>
 #include <functional>
-
 
 template <typename T>
 T min(T a,T b) {
@@ -57,19 +57,20 @@ int Input() {
 
 	int answer;
 
-	do {
+	while (true) {
 		printf("丁の場合1を、半の場合２を入力してEnterを押してください\n");
 
-		// 文字列はいるとバグるgetを使ったのを調べ中。保留。
-		scanf_s("%d", &answer);
-
+		std::cin >> answer;
+		
 		if (answer == 1 || answer == 2) {
 			return answer;
 		}
 
-		printf("正しく入力してください\n");
+		printf("〇ね\n");
+		std::cin.clear();
+		std::cin.seekg(0);
 
-	} while (true);
+	}
 
 }
 
