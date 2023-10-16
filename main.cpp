@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <functional>
+#include "Enemy/Enemy.h"
 
 template <typename T>
 T min(T a,T b) {
@@ -111,12 +112,11 @@ void Answer(int answer, int dice) {
 
 int main() {
 
-	PFunc p;
-	p = Answer;
+	Enemy enemy;
 
 	while (true)
 	{
-		ChoHan(p, 3);
+		enemy.Update();
 	}
 
 	return 0;
