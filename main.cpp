@@ -3,6 +3,7 @@
 #include <chrono>
 #include <thread>
 #include <string>
+#include <functional>
 
 
 template <typename T>
@@ -47,10 +48,10 @@ int Syachiku(int hour, int hourmoney, int money) {
 typedef int (*newType)();
 typedef void (*PFunc)(int, int);
 
-int DicePip() { 
-	std::random_device dice;
-	return dice() % 6 + 1;
-}
+//int DicePip() { 
+//	std::random_device dice;
+//	return dice() % 6 + 1;
+//}
 
 int Input() {
 
@@ -76,8 +77,9 @@ void ChoHan(PFunc p, int second) {
 
 	newType hoge;
 
-	hoge = &DicePip;
-	int dice = hoge();
+	std::function<int()> DicePip = []() {std::random_device dice; return dice() % 6 + 1; };
+
+	int dice = DicePip();
 	hoge = &Input;
 	int answer = hoge();
 
