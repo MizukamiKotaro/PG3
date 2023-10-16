@@ -6,6 +6,7 @@
 #include <iostream>
 #include <functional>
 #include "Enemy/Enemy.h"
+#include "Hoge/Hoge.h"
 
 template <typename T>
 T min(T a,T b) {
@@ -110,14 +111,28 @@ void Answer(int answer, int dice) {
 	}
 }
 
+template <typename T>
+void Comment(T comment) {
+	std::cout << comment << std::endl;
+}
+
 int main() {
 
-	Enemy enemy;
+	Hoge<int, int> h1(10, 20);
+	Hoge<float, float> h2(1.2f, 3.4f);
+	Hoge<double, double> h3(3.4, 0.1);
+	Hoge<int, float> h4(10, 5.4f);
+	Hoge<int, double> h5(7, 1.9);
+	Hoge<float, double> h6(8.3f, 2.6);
 
-	while (true)
-	{
-		enemy.Update();
-	}
+
+	// 小さい方の型ではなくT1の方の型になっているので小数点以下が表示されないことがある
+	Comment(h1.Min());
+	Comment(h2.Min());
+	Comment(h3.Min());
+	Comment(h4.Min());
+	Comment(h5.Min());
+	Comment(h6.Min());
 
 	return 0;
 }
