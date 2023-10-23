@@ -1,11 +1,11 @@
 #pragma once
 #include "../Hololive.h"
 
-class Hazime : public Hololive
+class Pekora : public Hololive
 {
 public:
-	Hazime();
-	~Hazime() override;
+	Pekora();
+	~Pekora() override;
 
 	void Greeting() override;
 };

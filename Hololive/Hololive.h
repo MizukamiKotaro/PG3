@@ -12,7 +12,7 @@ public:
 	virtual void Greeting();
 
 protected:
-
-	const std::string name_;
+	// const にすると代入演算子がないと言われる
+	std::string name_;
 };
 

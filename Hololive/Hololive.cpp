@@ -3,14 +3,15 @@
 
 Hololive::Hololive()
 {
+	name_ = "Holo";
 }
 
 Hololive::~Hololive()
 {
-	std::cout << name_ << "の配信が終わった。" << std::endl;
+	std::cout << name_ << "'s finished delivery." << std::endl;
 }
 
 void Hololive::Greeting()
 {
-	std::cout << name_ << "の挨拶。" << std::endl;
+	std::cout << name_ << " does greeting." << std::endl;
 }

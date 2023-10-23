@@ -129,16 +129,16 @@
   <ItemGroup>
     <ClCompile Include="Enemy\Enemy.cpp" />
     <ClCompile Include="Hololive\Hololive.cpp" />
-    <ClCompile Include="Hololive\Member\Hazime.cpp" />
-    <ClCompile Include="Hololive\Member\Raden.cpp" />
+    <ClCompile Include="Hololive\Member\Marin.cpp" />
+    <ClCompile Include="Hololive\Member\Pekora.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemy\Enemy.h" />
     <ClInclude Include="Hoge\Hoge.h" />
     <ClInclude Include="Hololive\Hololive.h" />
-    <ClInclude Include="Hololive\Member\Hazime.h" />
-    <ClInclude Include="Hololive\Member\Raden.h" />
+    <ClInclude Include="Hololive\Member\Marin.h" />
+    <ClInclude Include="Hololive\Member\Pekora.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
