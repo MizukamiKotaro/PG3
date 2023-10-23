@@ -10,6 +10,9 @@
 #include "Hololive/Member/Marin.h"
 #include "Hololive/Member/Pekora.h"
 #include "Hololive/Hololive.h"
+#include "Shape/IShape.h"
+#include "Shape/Shapes/Circle.h"
+#include "Shape/Shapes/Rectangle.h"
 
 template <typename T>
 T min(T a,T b) {
@@ -121,17 +124,18 @@ void Comment(T comment) {
 
 int main() {
 
-	Hololive* holoMember[2];
+	IShape* shape[2];
 
-	holoMember[0] = new Marin;
-	holoMember[1] = new Pekora;
+	shape[0] = new Circle(5.0f);
+	shape[1] = new Rectangle(3.0f, 4.0f);
 
 	for (int i = 0; i < 2; i++) {
-		holoMember[i]->Greeting();
+		shape[i]->CalcArea();
+		shape[i]->Draw();
 	}
 
 	for (int i = 0; i < 2; i++) {
-		delete holoMember[i];
+		delete shape[i];
 	}
 
 	return 0;

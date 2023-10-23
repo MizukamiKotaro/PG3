@@ -8,7 +8,7 @@ Hololive::Hololive()
 
 Hololive::~Hololive()
 {
-	std::cout << name_ << "'s finished delivery." << std::endl;
+	std::cout << name_ << "'s delivery was finished." << std::endl;
 }
 
 void Hololive::Greeting()

@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -118,6 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -132,6 +134,9 @@
     <ClCompile Include="Hololive\Member\Marin.cpp" />
     <ClCompile Include="Hololive\Member\Pekora.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Shape\IShape.cpp" />
+    <ClCompile Include="Shape\Shapes\Circle.cpp" />
+    <ClCompile Include="Shape\Shapes\Rectangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemy\Enemy.h" />
@@ -139,6 +144,9 @@
     <ClInclude Include="Hololive\Hololive.h" />
     <ClInclude Include="Hololive\Member\Marin.h" />
     <ClInclude Include="Hololive\Member\Pekora.h" />
+    <ClInclude Include="Shape\IShape.h" />
+    <ClInclude Include="Shape\Shapes\Circle.h" />
+    <ClInclude Include="Shape\Shapes\Rectangle.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
