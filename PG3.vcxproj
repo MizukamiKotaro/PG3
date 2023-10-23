@@ -128,11 +128,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Enemy\Enemy.cpp" />
+    <ClCompile Include="Hololive\Hololive.cpp" />
+    <ClCompile Include="Hololive\Member\Hazime.cpp" />
+    <ClCompile Include="Hololive\Member\Raden.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemy\Enemy.h" />
     <ClInclude Include="Hoge\Hoge.h" />
+    <ClInclude Include="Hololive\Hololive.h" />
+    <ClInclude Include="Hololive\Member\Hazime.h" />
+    <ClInclude Include="Hololive\Member\Raden.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".editorconfig" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
