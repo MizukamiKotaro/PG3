@@ -74,6 +74,17 @@ int Input() {
 
 }
 
+void SetTimeout(newType beforeFuncP0, newType beforeFuncP1, PFunc afterFuncP, int second) {
+
+	int num0 = beforeFuncP0();
+
+	int num1 = beforeFuncP1();
+
+	std::this_thread::sleep_for(std::chrono::milliseconds(second * 1000));
+
+	afterFuncP(num0, num1);
+}
+
 void ChoHan(PFunc p, int second) {
 
 	newType hoge;
@@ -111,12 +122,9 @@ void Answer(int answer, int dice) {
 
 int main() {
 
-	PFunc p;
-	p = Answer;
-
 	while (true)
 	{
-		ChoHan(p, 3);
+		SetTimeout(Input, DicePip, Answer, 3);
 	}
 
 	return 0;
