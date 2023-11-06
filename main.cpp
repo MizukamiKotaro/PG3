@@ -18,10 +18,14 @@ char min<char>(char a, char b) {
 
 int main() {
 
-	printf("%d\n", min<int>(114, 514));
-	printf("%f\n", min<float>(11.4f, 51.4f));
-	printf("%f\n", min(11.4f, 51.4f));
-	printf("%c", min<char>('114', '514'));
+	int min0 = min<int>(114, 514);
+	printf("%d\n", min0);
+	float min1 = min<float>(11.4f, 51.4f);
+	printf("%f\n", min1);
+	double min2 = min(11.4, 51.4);
+	printf("%lf\n", min2);
+	char min3 = min<char>('114', '514');
+	printf("%c", min3);
 
 	return 0;
 }
