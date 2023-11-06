@@ -13,6 +13,7 @@
 #include "Shape/IShape.h"
 #include "Shape/Shapes/Circle.h"
 #include "Shape/Shapes/Rectangle.h"
+#include <string>
 
 template <typename T>
 T min(T a,T b) {
@@ -124,19 +125,9 @@ void Comment(T comment) {
 
 int main() {
 
-	IShape* shape[2];
+	std::string str = "斜め七十七度の並びに泣く泣くいななく七藩七代難なく眺めてながながめ～";
 
-	shape[0] = new Circle(5.0f);
-	shape[1] = new Rectangle(3.0f, 4.0f);
-
-	for (int i = 0; i < 2; i++) {
-		shape[i]->CalcArea();
-		shape[i]->Draw();
-	}
-
-	for (int i = 0; i < 2; i++) {
-		delete shape[i];
-	}
+	printf("%s", str.c_str());
 
 	return 0;
 }
