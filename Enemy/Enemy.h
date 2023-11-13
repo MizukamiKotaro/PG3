@@ -13,10 +13,10 @@ public:
 private:
 
 	enum class Phase {
-		kApproach, // Ú‹ß‚·‚é
-		kFire, // ËŒ‚‚·‚é
-		kLeave, // —£’E‚·‚é
-		kEnd, // I‚í‚è
+		kApproach, // æ¥è¿‘ã™ã‚‹
+		kFire, // å°„æ’ƒã™ã‚‹
+		kLeave, // é›¢è„±ã™ã‚‹
+		kEnd, // çµ‚ã‚ã‚Š
 	};
 
 	void ApproachPhase();
