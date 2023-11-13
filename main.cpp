@@ -8,7 +8,7 @@
 #include "Enemy/Enemy.h"
 
 template <typename T>
-T min(T a,T b) {
+T minCalc(T a,T b) {
 	if (a < b) {
 		return a;
 	}
@@ -18,7 +18,7 @@ T min(T a,T b) {
 }
 
 template <>
-char min<char>(char a, char b) {
+char minCalc<char>(char a, char b) {
 	printf("数字以外は代入できません");
 	return '\n';
 }
@@ -46,13 +46,13 @@ int Syachiku(int hour, int hourmoney, int money) {
 	}
 }
 
-typedef int (*newType)();
+typedef int (*PFuncReInt)();
 typedef void (*PFunc)(int, int);
 
-//int DicePip() { 
-//	std::random_device dice;
-//	return dice() % 6 + 1;
-//}
+int DicePip() { 
+	std::random_device dice;
+	return dice() % 6 + 1;
+}
 
 int Input() {
 
@@ -67,7 +67,7 @@ int Input() {
 			return answer;
 		}
 
-		printf("〇ね\n");
+		printf("正しく入力してください\n");
 		std::cin.clear();
 		std::cin.seekg(0);
 
@@ -75,9 +75,16 @@ int Input() {
 
 }
 
+void SetTimeout(PFunc afterPFunc, int second, int param0 = 0, int param1 = 0) {
+
+	std::this_thread::sleep_for(std::chrono::milliseconds(second * 1000));
+
+	afterPFunc(param0, param1);
+}
+
 void ChoHan(PFunc p, int second) {
 
-	newType hoge;
+	PFuncReInt hoge;
 
 	std::function<int()> DicePip = []() {std::random_device dice; return dice() % 6 + 1; };
 
@@ -111,12 +118,17 @@ void Answer(int answer, int dice) {
 }
 
 int main() {
-
-	Enemy enemy;
-
+	
 	while (true)
 	{
-		enemy.Update();
+
+		PFuncReInt pFunc = Input;
+		int answer = pFunc();
+
+		pFunc = DicePip;
+		int diceNum = pFunc();
+
+		SetTimeout(Answer, 3, answer, diceNum);
 	}
 
 	return 0;
