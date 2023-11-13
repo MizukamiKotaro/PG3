@@ -9,7 +9,7 @@ void Enemy::Update()
 
 void Enemy::ApproachPhase()
 {
-	printf("“G‚ªÚ‹ß\n");
+	printf("æ•µãŒæ¥è¿‘\n");
 
 	std::this_thread::sleep_for(std::chrono::milliseconds(4 * 1000));
 
@@ -18,21 +18,21 @@ void Enemy::ApproachPhase()
 
 void Enemy::Fire()
 {
-	printf("“G‚ªËŒ‚\n");
+	printf("æ•µãŒå°„æ’ƒ\n");
 	std::this_thread::sleep_for(std::chrono::milliseconds(4 * 1000));
 	phase_ = Phase::kLeave;
 }
 
 void Enemy::LeavePhase()
 {
-	printf("“G‚ª—£’E\n");
+	printf("æ•µãŒé›¢è„±\n");
 	std::this_thread::sleep_for(std::chrono::milliseconds(4 * 1000));
 	phase_ = Phase::kEnd;
 }
 
 void Enemy::EndPhase()
 {
-	printf("I‚í‚è\n");
+	printf("çµ‚ã‚ã‚Š\n");
 
 	std::this_thread::sleep_for(std::chrono::milliseconds(10 * 1000));
 }
