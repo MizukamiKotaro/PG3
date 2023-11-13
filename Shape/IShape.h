@@ -9,7 +9,7 @@ public:
 
 	virtual ~IShape() = 0;
 
-	virtual void CalcArea() = 0;
+	virtual void Size() = 0;
 
 	virtual void Draw() = 0;
 

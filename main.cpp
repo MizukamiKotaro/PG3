@@ -130,7 +130,7 @@ int main() {
 	shape[1] = new Rectangle(3.0f, 4.0f);
 
 	for (int i = 0; i < 2; i++) {
-		shape[i]->CalcArea();
+		shape[i]->Size();
 		shape[i]->Draw();
 	}
 

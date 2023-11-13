@@ -10,7 +10,7 @@ Rectangle::Rectangle(float height, float width)
 	area_ = 1.0f;
 }
 
-void Rectangle::CalcArea()
+void Rectangle::Size()
 {
 	area_ = height_ * width_;
 }

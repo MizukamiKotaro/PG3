@@ -12,7 +12,7 @@ Circle::Circle(float radius)
 	area_ = 1.0f;
 }
 
-void Circle::CalcArea()
+void Circle::Size()
 {
 	area_ = std::powf(radius_, 2.0f) * std::numbers::pi_v<float>;
 }

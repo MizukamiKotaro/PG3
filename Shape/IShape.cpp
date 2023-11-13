@@ -15,7 +15,7 @@ IShape::~IShape()
 	std::cout << name_ << " was deleted." << std::endl;
 }
 
-void IShape::CalcArea() 
+void IShape::Size() 
 {
 	area_ = height_ * width_;
 }

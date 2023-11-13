@@ -6,7 +6,7 @@ class Rectangle : public IShape
 public:
 
 	Rectangle(float height, float width);
-	void CalcArea() override;
+	void Size() override;
 	void Draw() override;
 };
 
