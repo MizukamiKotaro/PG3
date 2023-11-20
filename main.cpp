@@ -5,29 +5,17 @@
 #include <iostream>
 #include <functional>
 
-typedef void (*PFunc)(int, int);
+void SetTimeout(std::function<void()> func, int second) {
 
-void Answer(int answer, int dice) {
+	std::this_thread::sleep_for(std::chrono::milliseconds(second * 1000));
 
-	if (answer == (dice) % 2 + 1) {
-		if ((dice) % 2 == 0) {
-			printf("%dの丁で正解\n", dice);
-		}
-		else {
-			printf("%dの半で正解\n", dice);
-		}
-	}
-	else {
-		if ((dice) % 2 == 0) {
-			printf("%dの丁で不正解\n", dice);
-		}
-		else {
-			printf("%dの半で不正解\n", dice);
-		}
-	}
+	func();
 }
 
 int main() {
+
+	int answer;
+	int diceNum;
 
 	std::function<int()> Input = []() {
 		int answer;
@@ -51,12 +39,23 @@ int main() {
 		return dice() % 6 + 1;
 	};
 
-	int answer;
-	int diceNum;
-
-	std::function<void(PFunc, int)> SetTimeout = [&](PFunc afterPFunc, int second) {
-		std::this_thread::sleep_for(std::chrono::milliseconds(second * 1000));
-		afterPFunc(answer, diceNum);
+	std::function<void()> Answer = [&]() {
+		if (answer == (diceNum) % 2 + 1) {
+			if ((diceNum) % 2 == 0) {
+				printf("%dの丁で正解\n", diceNum);
+			}
+			else {
+				printf("%dの半で正解\n", diceNum);
+			}
+		}
+		else {
+			if ((diceNum) % 2 == 0) {
+				printf("%dの丁で不正解\n", diceNum);
+			}
+			else {
+				printf("%dの半で不正解\n", diceNum);
+			}
+		}
 	};
 	
 	while (true)
@@ -70,3 +69,6 @@ int main() {
 
 	return 0;
 }
+
+
+
