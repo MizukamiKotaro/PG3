@@ -1,121 +1,8 @@
 #include <stdio.h>
-#include <random>
-#include <chrono>
-#include <thread>
-#include <string>
 #include <iostream>
-#include <functional>
-#include "Enemy/Enemy.h"
-#include "Hoge/Hoge.h"
-#include "Hololive/Member/Marin.h"
-#include "Hololive/Member/Pekora.h"
-#include "Hololive/Hololive.h"
-#include "Shape/IShape.h"
-#include "Shape/Shapes/Circle.h"
-#include "Shape/Shapes/Rectangle.h"
-
-template <typename T>
-T min(T a,T b) {
-	if (a < b) {
-		return a;
-	}
-	else {
-		return b;
-	}
-}
-
-template <>
-char min<char>(char a, char b) {
-	printf("数字以外は代入できません");
-	return '\n';
-}
-
-int Syachiku(int hour, int hourmoney, int money) {
-
-	int money0 = 1072 * (hour + 1);
-	
-	if (hour == 0) {
-		money = 100;
-		hourmoney = money;
-		hour++;
-	}
-	else {
-		hourmoney = hourmoney * 2 - 50;
-		money += hourmoney;
-		hour++;
-	}
-
-	if (money > money0) {
-		return hour;
-	}
-	else {
-		return Syachiku(hour, hourmoney, money);
-	}
-}
-
-typedef int (*newType)();
-typedef void (*PFunc)(int, int);
-
-//int DicePip() { 
-//	std::random_device dice;
-//	return dice() % 6 + 1;
-//}
-
-int Input() {
-
-	int answer;
-
-	while (true) {
-		printf("丁の場合1を、半の場合２を入力してEnterを押してください\n");
-
-		std::cin >> answer;
-		
-		if (answer == 1 || answer == 2) {
-			return answer;
-		}
-
-		printf("〇ね\n");
-		std::cin.clear();
-		std::cin.seekg(0);
-
-	}
-
-}
-
-void ChoHan(PFunc p, int second) {
-
-	newType hoge;
-
-	std::function<int()> DicePip = []() {std::random_device dice; return dice() % 6 + 1; };
-
-	int dice = DicePip();
-	hoge = &Input;
-	int answer = hoge();
-
-	std::this_thread::sleep_for(std::chrono::milliseconds(second * 1000));
-
-	p(answer, dice);
-}
-
-void Answer(int answer, int dice) {
-
-	if (answer == (dice) % 2 + 1) {
-		if ((dice) % 2 == 0) {
-			printf("%dの丁で正解\n", dice);
-		}
-		else {
-			printf("%dの半で正解\n", dice);
-		}
-	}
-	else {
-		if ((dice) % 2 == 0) {
-			printf("%dの丁で不正解\n", dice);
-		}
-		else {
-			printf("%dの半で不正解\n", dice);
-		}
-	}
-}
+#include <list>
+#include <Windows.h>
+#include <string>
 
 template <typename T>
 void Comment(T comment) {
@@ -123,19 +10,68 @@ void Comment(T comment) {
 }
 
 int main() {
+	SetConsoleOutputCP(65001);
 
-	IShape* shape[2];
+	std::list<const char*> stationNames {
+		"Tokyo",
+		"Kanda",
+		"Akihabara",
+		"Okachimachi",
+		"Ueno",
+		"Uguisudani",
+		"Nippori",
+		"Tabata",
+		"Komagome",
+		"Sugamo",
+		"Otsuka",
+		"Ikebukuro",
+		"Mejiro",
+		"Takadanobaba",
+		"Shin-Okubo",
+		"Shinjuku",
+		"Yoyogi",
+		"Harajuku",
+		"Shibuya",
+		"Ebisu",
+		"Meguro",
+		"Gotanda",
+		"Osaki",
+		"Shinagawa",
+		"Tamachi",
+		"Hamamatsucho",
+		"Shimbashi",
+		"Yurakucho"
+	};
 
-	shape[0] = new Circle(5.0f);
-	shape[1] = new Rectangle(3.0f, 4.0f);
 
-	for (int i = 0; i < 2; i++) {
-		shape[i]->Size();
-		shape[i]->Draw();
+	Comment("1970");
+	for (std::list<const char*>::iterator it_station = stationNames.begin(); it_station != stationNames.end(); it_station++) {
+		Comment(*it_station);
 	}
 
-	for (int i = 0; i < 2; i++) {
-		delete shape[i];
+	for (std::list<const char*>::iterator it_station = stationNames.begin(); it_station != stationNames.end(); it_station++) {
+		if (*it_station == "Tabata") {
+			it_station = stationNames.insert(it_station, "Nishi-Nippori");
+			break;
+		}
+	}
+
+	Comment("");
+	Comment("2019");
+	for (std::list<const char*>::iterator it_station = stationNames.begin(); it_station != stationNames.end(); it_station++) {
+		Comment(*it_station);
+	}
+
+	for (std::list<const char*>::iterator it_station = stationNames.begin(); it_station != stationNames.end(); it_station++) {
+		if (*it_station == "Tamachi") {
+			it_station = stationNames.insert(it_station, "Takanawa Gateway");
+			break;
+		}
+	}
+	Comment("");
+	Comment("2022");
+	for (std::list<const char*>::iterator it_station = stationNames.begin(); it_station != stationNames.end(); it_station++) {
+		Comment(*it_station);
 	}
 
 	return 0;
