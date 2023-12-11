@@ -50,8 +50,8 @@ int main() {
 
 	names.sort(CompareChar);
 
-	for (std::list<const char*>::iterator it_station = names.begin(); it_station != names.end(); it_station++) {
-		Comment(*it_station);
+	for (std::list<const char*>::iterator it_name = names.begin(); it_name != names.end(); it_name++) {
+		Comment(*it_name);
 	}
 
 	return 0;
