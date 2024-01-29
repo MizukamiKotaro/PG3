@@ -1,26 +1,38 @@
 #include <stdio.h>
 #include <iostream>
-#include <thread>
+#include <string>
+#include <chrono>
 
 template <typename T>
 void Comment(T comment) {
 	std::cout << comment << std::endl;
 }
 
-void PrintThread(int num) {
-	std::cout << "thread " << num << std::endl;
-}
-
 int main() {
 	
-	std::thread th1(PrintThread, 1);
-	th1.join();
+	std::string a(1000000, 'a');
 
-	std::thread th2(PrintThread, 2);
-	th2.join();
+	std::string b;
 
-	std::thread th3(PrintThread, 3);
-	th3.join();
+	std::chrono::steady_clock::time_point startTime = std::chrono::steady_clock::now();
+
+	b = a;
+
+	std::chrono::steady_clock::time_point endTime = std::chrono::steady_clock::now();
+
+	std::chrono::microseconds time = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime);
+
+	Comment(time);
+
+	startTime = std::chrono::steady_clock::now();
+
+	b = std::move(a);
+
+	endTime = std::chrono::steady_clock::now();
+
+	time = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime);
+
+	Comment(time);
 
 	return 0;
 }
